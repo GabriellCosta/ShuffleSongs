@@ -28,7 +28,7 @@ jobs:
       - restore_cache: *restore-cache
       - run:
           name: Download Dependencies
-          command: ./gradlew depepndecies
+          command: ./gradlew dependencies
       - save_cache:
           paths:
             - ~/.gradle
