@@ -31,3 +31,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+subprojects {
+    apply from: "$rootDir/tools/ktlint.gradle"
+    apply from: "$rootDir/tools/detekt.gradle"
+}
