@@ -1,0 +1,16 @@
+import dependencies.Dependencies
+
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation Dependencies.kotlinStdlib
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitGsonConverter
+    implementation Dependencies.okhttp
+    implementation Dependencies.okhttpLogger
+    implementation Dependencies.rxRetrofitAdapter
+    implementation Dependencies.koin
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

@@ -1,4 +1,5 @@
 import dependencies.Dependencies
+import dependencies.Modules
 
 apply plugin: 'com.android.application'
 
@@ -13,6 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner AndroidConfig.instrumentationTestRunner
+        buildConfigField("String", "API_URL", "\"https://us-central1-tw-exercicio-mobile.cloudfunctions.net\"")
     }
     buildTypes {
         release {
@@ -23,5 +25,8 @@ android {
 }
 
 dependencies {
+    implementation project(Modules.Network)
+
     implementation Dependencies.kotlinStdlib
+    implementation Dependencies.koin
 }
