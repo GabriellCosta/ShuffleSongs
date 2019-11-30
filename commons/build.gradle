@@ -1,0 +1,15 @@
+import dependencies.Dependencies
+import dependencies.TestDependencies
+
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation Dependencies.kotlinStdlib
+    implementation Dependencies.rxKotlin
+
+    testImplementation TestDependencies.jUnit
+    testImplementation TestDependencies.mockk
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
