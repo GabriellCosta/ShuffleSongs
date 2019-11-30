@@ -5,6 +5,7 @@ internal object Versions {
     const val okhttp = "4.2.2"
     const val retrofit = "2.6.2"
     const val supportLibrary = "1.1.0"
+    const val material = "1.1.0-beta02"
     const val recyclerView = "1.0.0"
     const val jUnit4 = "4.12"
     const val assertJ = "2.9.1"
@@ -37,7 +38,7 @@ object Dependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.supportLibrary}"
     const val cardView = "androidx.cardview:cardview:${Versions.supportLibrary}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
-    const val materialDesign = "com.google.android.material:material:${Versions.supportLibrary}"
+    const val materialDesign = "com.google.android.material:material:${Versions.material}"
 
     const val koin = "org.koin:koin-androidx-ext:${Versions.koin}"
     const val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"

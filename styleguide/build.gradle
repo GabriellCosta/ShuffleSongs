@@ -1,0 +1,18 @@
+import dependencies.Dependencies
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion AndroidConfig.compileSdk
+    defaultConfig {
+        minSdkVersion AndroidConfig.minSdk
+        targetSdkVersion AndroidConfig.compileSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner AndroidConfig.instrumentationTestRunner
+    }
+}
+
+dependencies {
+    implementation Dependencies.materialDesign
+}

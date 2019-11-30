@@ -2,5 +2,6 @@ include ':app'
 include ':network'
 include ':commons'
 include "features:list"
+include ':styleguide'
 
 rootProject.name='Shuffle Songs'
