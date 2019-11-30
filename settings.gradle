@@ -1,5 +1,6 @@
 include ':app'
 include ':network'
 include ':commons'
+include "features:list"
 
 rootProject.name='Shuffle Songs'
