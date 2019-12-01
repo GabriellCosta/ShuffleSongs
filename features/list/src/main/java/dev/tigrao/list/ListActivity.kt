@@ -2,7 +2,10 @@ package dev.tigrao.list
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -80,5 +83,18 @@ class ListActivity : AppCompatActivity() {
     private fun finishLoad() {
         loading.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_list, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_list_shuffle)
+            listViewModel.shuffle()
+
+        return super.onOptionsItemSelected(item)
     }
 }

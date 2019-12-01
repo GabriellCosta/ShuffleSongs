@@ -34,4 +34,8 @@ internal class ListViewModel(
 
         disposable?.dispose()
     }
+
+    fun shuffle() {
+
+    }
 }
