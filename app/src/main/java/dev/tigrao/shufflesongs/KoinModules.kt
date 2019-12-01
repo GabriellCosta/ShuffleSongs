@@ -1,5 +1,6 @@
 package dev.tigrao.shufflesongs
 
+import dev.tigrao.list.di.listModule
 import dev.tigrao.network.NetworkBuilder
 import dev.tigrao.network.di.networkModule
 import org.koin.core.context.startKoin
@@ -10,6 +11,7 @@ internal class KoinModules {
     fun start() {
         startKoin {
             modules(networkModule)
+            modules(listModule)
 
             modules(module {
                 single {
