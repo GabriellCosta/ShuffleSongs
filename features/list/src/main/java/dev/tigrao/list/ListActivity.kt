@@ -17,6 +17,8 @@ import dev.tigrao.commons.statemachine.StartedEvent
 import dev.tigrao.commons.statemachine.StateEvent
 import dev.tigrao.commons.statemachine.SuccessEvent
 import dev.tigrao.shufflesongs.feature.list.R
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListActivity : AppCompatActivity() {
@@ -27,6 +29,7 @@ class ListActivity : AppCompatActivity() {
     private val loading by lazy { findViewById<View>(R.id.progress_list) }
 
     private val listAdapter = ListAdapter()
+    private val layoutManagerFactory by inject<LayoutManagerFactory>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +43,7 @@ class ListActivity : AppCompatActivity() {
 
     private fun prepareList() {
         recyclerView.apply {
-            val linearLayoutManager = LinearLayoutManager(this@ListActivity)
+            val linearLayoutManager = layoutManagerFactory.getInstance(this@ListActivity)
             layoutManager = linearLayoutManager
             adapter = listAdapter
             addItemDecoration(

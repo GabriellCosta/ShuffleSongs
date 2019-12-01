@@ -1,6 +1,7 @@
 package dev.tigrao.list.di
 
 import dev.tigrao.commons.statemachine.StateMachine
+import dev.tigrao.list.LayoutManagerFactory
 import dev.tigrao.list.ListApi
 import dev.tigrao.list.ListApiConverter
 import dev.tigrao.list.ListUseCase
@@ -23,5 +24,9 @@ val listModule = module {
 
     single {
         get<Retrofit>().create(ListApi::class.java)
+    }
+
+    factory {
+        LayoutManagerFactory()
     }
 }
