@@ -19,6 +19,7 @@ internal object Versions {
     const val gson = "2.8.6"
     const val imageFetcher = "4.10.0"
     const val rxKotlin = "2.4.0"
+    const val rxAndroid = "2.1.1"
     const val rxRetrofitAdapter = "2.6.2"
 
     const val mockk = "1.9.2.kotlin12"
@@ -51,6 +52,7 @@ object Dependencies {
     const val viewModelExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.livedata}"
 
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxKotlin}"
+    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
     const val rxRetrofitAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.rxRetrofitAdapter}"
 
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
