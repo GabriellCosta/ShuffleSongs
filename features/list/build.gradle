@@ -33,6 +33,7 @@ dependencies {
 
     implementation Dependencies.appCompat
     implementation Dependencies.recyclerView
+    implementation Dependencies.materialDesign
 
     implementation Dependencies.viewModel
     implementation Dependencies.viewModelExtensions

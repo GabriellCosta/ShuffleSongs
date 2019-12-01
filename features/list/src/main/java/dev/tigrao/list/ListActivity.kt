@@ -11,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import dev.tigrao.commons.statemachine.ErrorDataDTO
 import dev.tigrao.commons.statemachine.ErrorEvent
 import dev.tigrao.commons.statemachine.FinishedEvent
 import dev.tigrao.commons.statemachine.StartedEvent
@@ -64,7 +66,7 @@ class ListActivity : AppCompatActivity() {
     private fun observeStates(state: StateEvent<List<ListVO>>) {
         when (state) {
             StartedEvent -> startLoad()
-            is ErrorEvent -> Log.e("ListActivity", state.errorDataDTO.throwable.message)
+            is ErrorEvent -> onError(state.errorDataDTO)
             is SuccessEvent -> onSuccess(state.result)
             FinishedEvent -> finishLoad()
         }
@@ -81,6 +83,18 @@ class ListActivity : AppCompatActivity() {
 
         loading.visibility = View.VISIBLE
         recyclerView.visibility = View.GONE
+    }
+
+    private fun onError(errorDataDTO: ErrorDataDTO) {
+        Snackbar.make(
+            window.decorView,
+            errorDataDTO.throwable.message.orEmpty(),
+            Snackbar.LENGTH_INDEFINITE
+        )
+            .setAction("Try Again") {
+                listViewModel.fetchSongs()
+            }
+            .show()
     }
 
     private fun finishLoad() {
