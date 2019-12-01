@@ -1,5 +1,6 @@
 import dependencies.Dependencies
 import dependencies.Modules
+import dependencies.TestDependencies
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
@@ -16,11 +17,15 @@ android {
 }
 
 dependencies {
-    implementation project(Modules.Network)
     implementation project(Modules.Commons)
+
+    implementation Dependencies.retrofit
+    implementation Dependencies.gson
 
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.koin
+    implementation Dependencies.rxKotlin
+    implementation Dependencies.rxAndroid
 
     implementation Dependencies.appCompat
     implementation Dependencies.recyclerView
@@ -31,4 +36,7 @@ dependencies {
 
     implementation Dependencies.imageFetcher
     implementation Dependencies.constraintLayout
+
+    testImplementation TestDependencies.jUnit
+    testImplementation TestDependencies.mockk
 }
