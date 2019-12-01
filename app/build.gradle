@@ -27,6 +27,7 @@ android {
 dependencies {
     implementation project(Modules.Network)
     implementation project(Modules.Features.list)
+    implementation project(Modules.Styleguide)
 
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.koin
