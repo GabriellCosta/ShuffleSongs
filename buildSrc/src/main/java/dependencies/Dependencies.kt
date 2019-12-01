@@ -5,7 +5,7 @@ internal object Versions {
     const val okhttp = "4.2.2"
     const val retrofit = "2.6.2"
     const val supportLibrary = "1.1.0"
-    const val material = "1.1.0-beta02"
+    const val material = "1.0.0"
     const val recyclerView = "1.0.0"
     const val jUnit4 = "4.12"
     const val assertJ = "2.9.1"
