@@ -1,4 +1,4 @@
-package dev.tigrao.list
+package dev.tigrao.list.ui
 
 import android.content.Context
 import android.content.res.Configuration

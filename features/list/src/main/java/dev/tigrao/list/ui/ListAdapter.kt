@@ -1,4 +1,4 @@
-package dev.tigrao.list
+package dev.tigrao.list.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import dev.tigrao.list.entity.ListVO
 import dev.tigrao.shufflesongs.feature.list.R
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {

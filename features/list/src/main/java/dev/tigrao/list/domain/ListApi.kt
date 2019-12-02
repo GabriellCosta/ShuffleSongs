@@ -1,5 +1,6 @@
-package dev.tigrao.list
+package dev.tigrao.list.domain
 
+import dev.tigrao.list.entity.ListResponseDTO
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,6 +1,6 @@
-package dev.tigrao.list.shuffle
+package dev.tigrao.list.domain.shuffle
 
-import dev.tigrao.list.ListVO
+import dev.tigrao.list.entity.ListVO
 
 internal class ArtistShuffleAlg(private val shuffleAlg: ShuffleAlg<ListVO>) : ShuffleAlg<ListVO> {
 

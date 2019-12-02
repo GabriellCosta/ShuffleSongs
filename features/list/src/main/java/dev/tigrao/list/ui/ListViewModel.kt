@@ -1,4 +1,4 @@
-package dev.tigrao.list
+package dev.tigrao.list.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import dev.tigrao.commons.statemachine.StateEvent
 import dev.tigrao.commons.statemachine.StateMachine
 import dev.tigrao.commons.statemachine.SuccessEvent
+import dev.tigrao.list.domain.ListUseCase
+import dev.tigrao.list.entity.ListVO
 import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 

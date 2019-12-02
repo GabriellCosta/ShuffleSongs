@@ -1,6 +1,8 @@
-package dev.tigrao.list
+package dev.tigrao.list.domain
 
-import dev.tigrao.list.shuffle.ShuffleAlg
+import dev.tigrao.list.entity.ListVO
+import dev.tigrao.list.entity.TrackResultDTO
+import dev.tigrao.list.domain.shuffle.ShuffleAlg
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 

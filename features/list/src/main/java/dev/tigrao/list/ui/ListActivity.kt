@@ -1,4 +1,4 @@
-package dev.tigrao.list
+package dev.tigrao.list.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +16,7 @@ import dev.tigrao.commons.statemachine.FinishedEvent
 import dev.tigrao.commons.statemachine.StartedEvent
 import dev.tigrao.commons.statemachine.StateEvent
 import dev.tigrao.commons.statemachine.SuccessEvent
+import dev.tigrao.list.entity.ListVO
 import dev.tigrao.shufflesongs.feature.list.R
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel

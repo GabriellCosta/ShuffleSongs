@@ -1,4 +1,7 @@
-package dev.tigrao.list
+package dev.tigrao.list.domain
+
+import dev.tigrao.list.entity.ListVO
+import dev.tigrao.list.entity.TrackResultDTO
 
 class ListApiConverter {
 

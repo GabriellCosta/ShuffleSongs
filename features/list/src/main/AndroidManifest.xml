@@ -3,7 +3,7 @@
   package="dev.tigrao.shufflesongs.feature.list">
 
   <application>
-    <activity android:name="dev.tigrao.list.ListActivity">
+    <activity android:name="dev.tigrao.list.ui.ListActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

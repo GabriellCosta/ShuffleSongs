@@ -1,4 +1,4 @@
-package dev.tigrao.list.shuffle
+package dev.tigrao.list.domain.shuffle
 
 internal interface ShuffleAlg<T> {
 

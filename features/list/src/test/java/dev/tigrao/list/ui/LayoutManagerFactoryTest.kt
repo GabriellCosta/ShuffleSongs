@@ -1,10 +1,11 @@
-package dev.tigrao.list
+package dev.tigrao.list.ui
 
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import dev.tigrao.list.ui.LayoutManagerFactory
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.assertTrue

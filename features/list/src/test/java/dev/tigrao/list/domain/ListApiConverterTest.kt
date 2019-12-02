@@ -1,5 +1,7 @@
-package dev.tigrao.list
+package dev.tigrao.list.domain
 
+import dev.tigrao.list.domain.ListApiConverter
+import dev.tigrao.list.entity.ListResultItemDTO
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.net.URL

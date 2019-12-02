@@ -1,4 +1,4 @@
-package dev.tigrao.list.shuffle
+package dev.tigrao.list.domain.shuffle
 
 import java.util.Random
 import java.util.concurrent.ThreadLocalRandom

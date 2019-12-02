@@ -1,4 +1,4 @@
-package dev.tigrao.list
+package dev.tigrao.list.entity
 
 import com.google.gson.annotations.SerializedName
 import java.net.URL

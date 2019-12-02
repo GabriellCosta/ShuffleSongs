@@ -1,4 +1,4 @@
-package dev.tigrao.list
+package dev.tigrao.list.entity
 
 class ListVO(
     val musicName: String,

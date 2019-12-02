@@ -1,6 +1,9 @@
-package dev.tigrao.list
+package dev.tigrao.list.domain
 
-import dev.tigrao.list.shuffle.ShuffleAlg
+import dev.tigrao.list.entity.ListResponseDTO
+import dev.tigrao.list.entity.ListResultItemDTO
+import dev.tigrao.list.entity.ListVO
+import dev.tigrao.list.domain.shuffle.ShuffleAlg
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -14,13 +17,18 @@ class ListUseCaseTest {
 
     private val listApi = mockk<ListApi>()
     private val shuffleAlg = mockk<ShuffleAlg<ListVO>>(relaxed = true)
-    private val useCase = ListUseCase(Schedulers.trampoline(), listApi, ListApiConverter(),
+    private val useCase = ListUseCase(
+        Schedulers.trampoline(), listApi, ListApiConverter(),
         shuffleAlg
     )
 
     @Test
     fun givenSuccessApiResponse_ShouldEmitNoErrors() {
-        every { listApi.fetchSongs(any()) } returns Observable.just(ListResponseDTO(listOf()))
+        every { listApi.fetchSongs(any()) } returns Observable.just(
+            ListResponseDTO(
+                listOf()
+            )
+        )
 
         useCase.fetchSongs()
             .test()
@@ -29,7 +37,7 @@ class ListUseCaseTest {
 
     @Test
     fun givenSuccessApiResponse_ShouldOnlyEmitTracks() {
-        val noTrackItem = ListResultItemDTO(1,  "tiger", "tiger", null, null)
+        val noTrackItem = ListResultItemDTO(1, "tiger", "tiger", null, null)
         val trackItem = ListResultItemDTO(
             1,
             "tiger",
