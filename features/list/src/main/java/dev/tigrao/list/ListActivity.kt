@@ -5,11 +5,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import dev.tigrao.commons.statemachine.ErrorDataDTO
@@ -19,7 +17,6 @@ import dev.tigrao.commons.statemachine.StartedEvent
 import dev.tigrao.commons.statemachine.StateEvent
 import dev.tigrao.commons.statemachine.SuccessEvent
 import dev.tigrao.shufflesongs.feature.list.R
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
