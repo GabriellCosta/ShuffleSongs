@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dev.tigrao.commons.statemachine.StateEvent
 import dev.tigrao.commons.statemachine.StateMachine
+import dev.tigrao.commons.statemachine.SuccessEvent
 import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 
@@ -14,9 +15,12 @@ internal class ListViewModel(
     private val observerScheduler: Scheduler
 ) : ViewModel() {
 
+    private var disposable: Disposable? = null
+
     private val _liveData = MutableLiveData<StateEvent<List<ListVO>>>()
     val liveData : LiveData<StateEvent<List<ListVO>>> = _liveData
-    private var disposable: Disposable? = null
+
+    private val listVO = mutableListOf<ListVO>()
 
     fun fetchSongs() {
 
@@ -24,6 +28,12 @@ internal class ListViewModel(
             .fetchSongs()
             .compose(stateMachine)
             .observeOn(observerScheduler)
+            .doAfterNext {
+                if (it is SuccessEvent) {
+                    listVO.clear()
+                    listVO.addAll(it.result)
+                }
+            }
             .subscribe {
                 _liveData.value = it
             }
@@ -36,6 +46,8 @@ internal class ListViewModel(
     }
 
     fun shuffle() {
+        val shuffled = useCase.shuffle(listVO)
 
+        _liveData.value = SuccessEvent(shuffled)
     }
 }

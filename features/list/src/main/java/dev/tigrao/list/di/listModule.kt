@@ -5,7 +5,11 @@ import dev.tigrao.list.LayoutManagerFactory
 import dev.tigrao.list.ListApi
 import dev.tigrao.list.ListApiConverter
 import dev.tigrao.list.ListUseCase
+import dev.tigrao.list.ListVO
 import dev.tigrao.list.ListViewModel
+import dev.tigrao.list.shuffle.ArtistShuffleAlg
+import dev.tigrao.list.shuffle.FisherYatesAlg
+import dev.tigrao.list.shuffle.ShuffleAlg
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -19,7 +23,7 @@ val listModule = module {
     }
 
     single {
-        ListUseCase(Schedulers.io(), get(), ListApiConverter())
+        ListUseCase(Schedulers.io(), get(), ListApiConverter(), get())
     }
 
     single {
@@ -28,5 +32,11 @@ val listModule = module {
 
     factory {
         LayoutManagerFactory()
+    }
+
+    factory<ShuffleAlg<ListVO>> {
+        val fisherYatesAlg = FisherYatesAlg<ListVO>()
+
+        ArtistShuffleAlg(fisherYatesAlg)
     }
 }
