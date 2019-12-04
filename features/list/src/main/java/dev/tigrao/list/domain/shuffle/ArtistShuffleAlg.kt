@@ -17,22 +17,22 @@ internal class ArtistShuffleAlg : ShuffleAlg<ListVO> {
         var last: ListVO? = null
 
         while (linkedList.isNotEmpty()) {
-            val (key, list1) = linkedList.pop()
+            val (currentArtistKey, currentMusicList) = linkedList.pop()
 
-            if (list1.peek().artistName != last?.artistName || linkedList.isEmpty()) {
-                list1.strongShuffle()
-                last = list1.pop()
+            if (currentMusicList.peek().artistName != last?.artistName || linkedList.isEmpty()) {
+                currentMusicList.strongShuffle()
+                last = currentMusicList.pop()
             } else {
-                val (key2, list2) = linkedList.pop()
-                list2.strongShuffle()
-                last = list2.pop()
-                if (list2.isNotEmpty()) {
-                    linkedList.add(key2 to list2)
+                val (nextArtistKey, aHeadMusicList) = linkedList.pop()
+                aHeadMusicList.strongShuffle()
+                last = aHeadMusicList.pop()
+                if (aHeadMusicList.isNotEmpty()) {
+                    linkedList.add(nextArtistKey to aHeadMusicList)
                 }
             }
             resultList.add(last)
-            if (list1.isNotEmpty()) {
-                linkedList.add(key to list1)
+            if (currentMusicList.isNotEmpty()) {
+                linkedList.add(currentArtistKey to currentMusicList)
             }
         }
 
