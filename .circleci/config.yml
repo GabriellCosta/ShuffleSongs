@@ -34,32 +34,20 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
-  lints:
+  checks:
     <<: *android_defaults
     steps:
       - checkout
       - restore_cache: *restore-cache
       - run:
-          name: Run Lint Test
+          name: Run check
           command: ./gradlew check
-
-  tests:
-    <<: *android_defaults
-    steps:
-      - checkout
-      - restore_cache: *restore-cache
-      - run:
-          name: Unit Test
-          command: ./gradlew test
 
 workflows:
   version: 2
   build-test-and-deploy:
     jobs:
       - build
-      - lints:
+      - checks:
           requires:
             - build
-      - tests:
-          requires:
-            - lints
