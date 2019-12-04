@@ -7,6 +7,8 @@ import org.junit.Test
 
 class ArtistShuffleAlgTest {
 
+    private val artistShuffleAlg = ArtistShuffleAlg()
+
     @Test
     fun givenSimplesList_WithMoreItemsThanOne_ShouldShuffle() {
         val initialList = listOf(
@@ -15,7 +17,7 @@ class ArtistShuffleAlgTest {
             ListVO("music", null, "Tiger")
         )
 
-        val result = ArtistShuffleAlg(FisherYatesAlg()).shuffle(initialList)
+        val result = artistShuffleAlg.shuffle(initialList)
 
         assertThatNotSameArtistInOrder(result)
     }
@@ -30,7 +32,7 @@ class ArtistShuffleAlgTest {
             ListVO("music", null, "Bruno")
         )
 
-        val result = ArtistShuffleAlg(FisherYatesAlg()).shuffle(initialList)
+        val result = artistShuffleAlg.shuffle(initialList)
 
         assertThatNotSameArtistInOrder(result)
     }
@@ -60,7 +62,7 @@ class ArtistShuffleAlgTest {
             ListVO("music20", null, "Thiago")
         )
 
-        val result = ArtistShuffleAlg(FisherYatesAlg()).shuffle(initialList)
+        val result = artistShuffleAlg.shuffle(initialList)
 
         assertThatNotSameArtistInOrder(result)
     }
@@ -77,7 +79,7 @@ class ArtistShuffleAlgTest {
             }
         }
 
-        val result = ArtistShuffleAlg(FisherYatesAlg()).shuffle(parameterList)
+        val result = artistShuffleAlg.shuffle(parameterList)
 
         assertThatNotSameArtistInOrder(result)
     }

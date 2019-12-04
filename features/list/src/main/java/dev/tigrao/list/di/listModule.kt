@@ -1,15 +1,14 @@
 package dev.tigrao.list.di
 
 import dev.tigrao.commons.statemachine.StateMachine
-import dev.tigrao.list.ui.LayoutManagerFactory
 import dev.tigrao.list.domain.ListApi
 import dev.tigrao.list.domain.ListApiConverter
 import dev.tigrao.list.domain.ListUseCase
-import dev.tigrao.list.entity.ListVO
-import dev.tigrao.list.ui.ListViewModel
 import dev.tigrao.list.domain.shuffle.ArtistShuffleAlg
-import dev.tigrao.list.domain.shuffle.FisherYatesAlg
 import dev.tigrao.list.domain.shuffle.ShuffleAlg
+import dev.tigrao.list.entity.ListVO
+import dev.tigrao.list.ui.LayoutManagerFactory
+import dev.tigrao.list.ui.ListViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -44,8 +43,6 @@ val listModule = module {
     }
 
     factory<ShuffleAlg<ListVO>> {
-        val fisherYatesAlg = FisherYatesAlg<ListVO>()
-
-        ArtistShuffleAlg(fisherYatesAlg)
+        ArtistShuffleAlg()
     }
 }

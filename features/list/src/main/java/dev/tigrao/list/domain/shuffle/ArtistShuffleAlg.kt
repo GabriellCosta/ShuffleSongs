@@ -3,7 +3,7 @@ package dev.tigrao.list.domain.shuffle
 import dev.tigrao.list.entity.ListVO
 import java.util.LinkedList
 
-internal class ArtistShuffleAlg(shuffleAlg: ShuffleAlg<ListVO>) : ShuffleAlg<ListVO> {
+internal class ArtistShuffleAlg : ShuffleAlg<ListVO> {
 
     override fun shuffle(list: List<ListVO>): List<ListVO> {
         val mutableList = list.toMutableList()
