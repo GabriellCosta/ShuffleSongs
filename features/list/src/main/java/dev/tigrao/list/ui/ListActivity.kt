@@ -89,7 +89,7 @@ class ListActivity : AppCompatActivity() {
             errorDataDTO.throwable.message.orEmpty(),
             Snackbar.LENGTH_INDEFINITE
         )
-            .setAction("Try Again") {
+            .setAction(R.string.list_error_try_again) {
                 listViewModel.fetchSongs()
             }
             .show()
