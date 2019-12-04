@@ -1,13 +1,44 @@
 package dev.tigrao.list.domain.shuffle
 
 import dev.tigrao.list.entity.ListVO
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals
-import org.junit.Ignore
 import org.junit.Test
 
 class ArtistShuffleAlgTest {
 
     private val artistShuffleAlg = ArtistShuffleAlg()
+
+    @Test
+    fun givenList_EveryShuffle_ShouldBeDifferent() {
+        val initialList = listOf(
+            ListVO("music1", null, "Tiger"),
+            ListVO("music2", null, "Tiger"),
+            ListVO("music3", null, "Tiger"),
+            ListVO("music4", null, "Tiger"),
+            ListVO("music5", null, "Tiger"),
+            ListVO("music6", null, "Bruno"),
+            ListVO("music7", null, "Bruno"),
+            ListVO("music8", null, "Bruno"),
+            ListVO("music9", null, "Bruno"),
+            ListVO("music10", null, "Bruno"),
+            ListVO("music11", null, "Android"),
+            ListVO("music12", null, "Android"),
+            ListVO("music13", null, "Android"),
+            ListVO("music14", null, "Android"),
+            ListVO("music15", null, "Android"),
+            ListVO("music16", null, "Thiago"),
+            ListVO("music17", null, "Thiago"),
+            ListVO("music18", null, "Thiago"),
+            ListVO("music19", null, "Thiago"),
+            ListVO("music20", null, "Thiago")
+        )
+
+        val firstResult = artistShuffleAlg.shuffle(initialList)
+        val secondResult = artistShuffleAlg.shuffle(initialList)
+
+        assertFalse(firstResult.toTypedArray().contentDeepEquals(secondResult.toTypedArray()))
+    }
 
     @Test
     fun givenSimplesList_WithMoreItemsThanOne_ShouldShuffle() {
@@ -68,7 +99,7 @@ class ArtistShuffleAlgTest {
     }
 
     @Test
-    @Ignore("Take to long to run")
+    //@Ignore("Take to long to run")
     fun givenAVeryBigList_ShouldBeShuffled() {
         val parameterList = mutableListOf<ListVO>()
         val numberOfItems = 1000

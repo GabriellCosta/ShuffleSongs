@@ -7,12 +7,15 @@ internal class ArtistShuffleAlg : ShuffleAlg<ListVO> {
 
     override fun shuffle(list: List<ListVO>): List<ListVO> {
         val mutableList = list.toMutableList()
-
         val itemMap = mutableList.toMutableMap()
 
         val linkedList = LinkedList<Pair<String, LinkedList<ListVO>>>(itemMap.toList())
         linkedList.strongShuffle()
 
+        return shuffleList(linkedList)
+    }
+
+    private fun shuffleList(linkedList: LinkedList<Pair<String, LinkedList<ListVO>>>): List<ListVO> {
         val resultList = mutableListOf<ListVO>()
         var last: ListVO? = null
 
@@ -20,27 +23,36 @@ internal class ArtistShuffleAlg : ShuffleAlg<ListVO> {
             val (currentArtistKey, currentMusicList) = linkedList.pop()
 
             if (currentMusicList.peek().artistName != last?.artistName || linkedList.isEmpty()) {
-                currentMusicList.strongShuffle()
-                last = currentMusicList.pop()
+                last = getMusic(currentMusicList)
             } else {
                 val (nextArtistKey, aHeadMusicList) = linkedList.pop()
-                aHeadMusicList.strongShuffle()
-                last = aHeadMusicList.pop()
-                if (aHeadMusicList.isNotEmpty()) {
-                    linkedList.add(nextArtistKey to aHeadMusicList)
-                }
+
+                last = getMusic(aHeadMusicList)
+
+                linkedList.addDestructedItemsAgain(nextArtistKey to aHeadMusicList)
             }
+
+            linkedList.addDestructedItemsAgain(currentArtistKey to currentMusicList)
+
             resultList.add(last)
-            if (currentMusicList.isNotEmpty()) {
-                linkedList.add(currentArtistKey to currentMusicList)
-            }
         }
 
         return resultList
     }
 
-    private fun <T> List<T>.strongShuffle() {
-        this.shuffled()
+    private fun LinkedList<Pair<String, LinkedList<ListVO>>>.addDestructedItemsAgain(pair: Pair<String, LinkedList<ListVO>>) {
+        if (pair.second.isNotEmpty()) {
+            add(pair)
+        }
+    }
+
+    private fun getMusic(list: LinkedList<ListVO>): ListVO {
+        list.strongShuffle()
+        return list.pop()
+    }
+
+    private fun <T> MutableList<T>.strongShuffle() {
+        this.shuffle()
     }
 
     private fun List<ListVO>.toMutableMap(): MutableMap<String, LinkedList<ListVO>> {
