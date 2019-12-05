@@ -70,6 +70,7 @@ This will run both unit and instrumented tests and generate a report
 that will be located here -> 
 
 `features/list/build/reports/jacoco/jacocoTestReport/html/index.html`
+
 `commons/build/reports/jacoco/index.html`
 
 ## Special thanks
