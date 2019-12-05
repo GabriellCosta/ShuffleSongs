@@ -4,6 +4,7 @@ import dependencies.TestDependencies
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply from: "$rootDir/tools/jacoco.gradle"
 
 android {
     compileSdkVersion AndroidConfig.compileSdk

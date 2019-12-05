@@ -2,6 +2,7 @@ import dependencies.Dependencies
 import dependencies.TestDependencies
 
 apply plugin: 'kotlin'
+apply plugin: 'jacoco'
 
 dependencies {
     implementation Dependencies.kotlinStdlib
@@ -9,6 +10,14 @@ dependencies {
 
     testImplementation TestDependencies.jUnit
     testImplementation TestDependencies.mockk
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        html.destination file("${buildDir}/reports/jacoco")
+    }
 }
 
 sourceCompatibility = "7"
