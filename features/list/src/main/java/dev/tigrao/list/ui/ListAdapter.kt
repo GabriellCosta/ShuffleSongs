@@ -11,7 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import dev.tigrao.list.entity.ListVO
 import dev.tigrao.shufflesongs.feature.list.R
 
-class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+internal class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     private val list = mutableListOf<ListVO>()
 
