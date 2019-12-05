@@ -3,6 +3,7 @@ package dev.tigrao.list.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dev.tigrao.commons.statemachine.FinishedEvent
 import dev.tigrao.commons.statemachine.StateEvent
 import dev.tigrao.commons.statemachine.StateMachine
 import dev.tigrao.commons.statemachine.SuccessEvent
@@ -20,12 +21,23 @@ internal class ListViewModel(
     private var disposable: Disposable? = null
 
     private val _liveData = MutableLiveData<StateEvent<List<ListVO>>>()
-    val liveData : LiveData<StateEvent<List<ListVO>>> = _liveData
+    val liveData: LiveData<StateEvent<List<ListVO>>> = _liveData
 
     private val listVO = mutableListOf<ListVO>()
 
     fun fetchSongs() {
+        if (listVO.isEmpty())
+            updateSongs()
+        else
+            justLoadPreFetched()
+    }
 
+    private fun justLoadPreFetched() {
+        _liveData.value = SuccessEvent(listVO)
+        _liveData.postValue(FinishedEvent)
+    }
+
+    private fun updateSongs() {
         disposable = useCase
             .fetchSongs()
             .compose(stateMachine)
@@ -49,6 +61,8 @@ internal class ListViewModel(
 
     fun shuffle() {
         val shuffled = useCase.shuffle(listVO)
+        listVO.clear()
+        listVO.addAll(shuffled)
 
         _liveData.value = SuccessEvent(shuffled)
     }
